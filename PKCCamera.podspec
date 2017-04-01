@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PKCCamera'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'PKC Lib - Camera'
   s.description      = 'Pikachu987 Easy Camera Auth And get Image Lib'
   s.homepage         = 'https://github.com/pikachu987/PKCCamera'
