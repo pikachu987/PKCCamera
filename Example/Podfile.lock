@@ -1,0 +1,16 @@
+PODS:
+  - PKCCamera (0.1.0)
+
+DEPENDENCIES:
+  - PKCCamera (from `../`)
+
+EXTERNAL SOURCES:
+  PKCCamera:
+    :path: ../
+
+SPEC CHECKSUMS:
+  PKCCamera: 1e744578896ed22cec3ddd3f231f0aef29e1eb2c
+
+PODFILE CHECKSUM: 4c3f3df7879a0e4160eb10c5246e7d030048a908
+
+COCOAPODS: 1.1.1

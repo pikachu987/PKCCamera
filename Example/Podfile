@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PKCCamera_Example' do
+  pod 'PKCCamera', :path => '../'
+
+  target 'PKCCamera_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

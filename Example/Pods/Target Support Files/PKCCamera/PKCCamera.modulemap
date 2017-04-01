@@ -1,0 +1,6 @@
+framework module PKCCamera {
+  umbrella header "PKCCamera-umbrella.h"
+
+  export *
+  module * { export * }
+}
