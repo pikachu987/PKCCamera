@@ -19,74 +19,68 @@ public protocol PKCCameraDelegate {
     @objc optional func pkcCameraOpen()
     @objc optional func pkcCameraCancel()
     func pkcCameraVisibleViewController() -> UIViewController
-    func pkcCameraImage(_ image: UIImage)
+    func pkcCameraImage(_ image: UIImage, navigationController: UINavigationController, visibleViewController: UIViewController)
+}
+
+public enum PKCCameraType{
+    case onlyCheck, open
 }
 
 public class PKCCamera: NSObject {
     
-    var delegate: PKCCameraDelegate?
+    public var delegate: PKCCameraDelegate?
     
-    var isCrop: Bool = false
+    fileprivate var isDeniedAlert = true
+    fileprivate var bundleIdentifier = ""
     
-    var isQuickCameraOpen = true
+    fileprivate var deniedAlertTitle = ""
+    fileprivate var deniedAlertMessage = "권한을 승인해 주셔야 카메라가 보입니다.\n설정창으로 이동하시겠습니까?"
+    fileprivate var deniedAlertConfirm = "이동하기"
+    fileprivate var deniedAlertCancel = "취소"
     
-    var isDeniedAlert = true
+    fileprivate lazy var picker: UIImagePickerController! = {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = self
+        return picker
+    }()
+    fileprivate lazy var navVC: UINavigationController! = {
+        let navVC = UINavigationController()
+        navVC.show(self.picker, sender: nil)
+        return navVC
+    }()
     
-    var bundleIdentifier = ""
     
-    private var deniedAlertTitle = ""
-    private var deniedAlertMessage = "권한을 승인해 주셔야 카메라가 보입니다.\n설정창으로 이동하시겠습니까?"
-    private var deniedAlertConfirm = "이동하기"
-    private var deniedAlertCancel = "취소"
-    
-    var picker = UIImagePickerController()
-    
-    override init() {
-        super.init()
-        self.picker.sourceType = .camera
-        self.picker.delegate = self
+    private override init() {
         
-        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized{
-            self.delegate?.pkcCameraGranted?()
-            if self.isQuickCameraOpen{
-                self.cameraOpen()
-            }
-        }else if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .denied{
-            self.delegate?.pkcCameraDenied?()
-            self.deniedAlert()
-        }else{
-            self.delegate?.pkcCameraUndentermined?()
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (isAccess) in
-                if isAccess{
-                    self.delegate?.pkcCameraGranted?()
-                    if self.isQuickCameraOpen{
-                        self.cameraOpen()
-                    }
-                }else{
-                    self.delegate?.pkcCameraDenied?()
-                    self.deniedAlert()
-                }
-            })
-        }
     }
     
-    func deniedAlertMessage(_ title: String, message: String, confirm: String, cancel: String){
+    public init(_ bundleIdentifier: String = "", isDeniedAlert: Bool = true) {
+        super.init()
+        
+        if self.bundleIdentifier == ""{
+            if let identifier = Bundle.main.bundleIdentifier{
+                self.bundleIdentifier = identifier
+            }
+        }
+        self.isDeniedAlert = isDeniedAlert
+    }
+    
+    
+    
+    open func deniedAlertMessage(_ title: String, message: String, confirm: String, cancel: String){
         self.deniedAlertTitle = title
         self.deniedAlertMessage = message
         self.deniedAlertConfirm = confirm
         self.deniedAlertCancel = cancel
     }
     
-    private func deniedAlert(){
+    
+    
+    fileprivate func deniedAlert(){
         if self.isDeniedAlert{
             guard let vc = self.delegate?.pkcCameraVisibleViewController() else {
                 return
-            }
-            if self.bundleIdentifier == ""{
-                guard let identifier = Bundle.main.bundleIdentifier else {
-                    return
-                }
-                self.bundleIdentifier = identifier
             }
             
             let alertController = UIAlertController(title: self.deniedAlertTitle, message: self.deniedAlertMessage, preferredStyle: .alert)
@@ -105,16 +99,38 @@ public class PKCCamera: NSObject {
         }
     }
     
-    public func cameraOpen(){
+    
+    open func open(_ type: PKCCameraType = .open){
+        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized{
+            self.delegate?.pkcCameraGranted?()
+            if type == .open{
+                self.cameraOpen()
+            }
+        }else if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .denied{
+            self.delegate?.pkcCameraDenied?()
+            self.deniedAlert()
+        }else{
+            self.delegate?.pkcCameraUndentermined?()
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (isAccess) in
+                if isAccess{
+                    self.delegate?.pkcCameraGranted?()
+                    if type == .open{
+                        self.cameraOpen()
+                    }
+                }else{
+                    self.delegate?.pkcCameraDenied?()
+                    self.deniedAlert()
+                }
+            })
+        }
+    }
+    
+    fileprivate func cameraOpen(){
         guard let vc = self.delegate?.pkcCameraVisibleViewController() else {
             return
         }
         self.delegate?.pkcCameraOpen?()
-        if self.isCrop{
-            //할껍니다...... 진짜 할겁니다... 이건 내 자신에게 하는 말입니다... 꼭 할껍니다....
-        }else{
-            vc.present(self.picker, animated: true, completion: nil)
-        }
+        vc.present(self.navVC, animated: true, completion: nil)
     }
     
     
@@ -126,9 +142,8 @@ public class PKCCamera: NSObject {
 extension PKCCamera: UIImagePickerControllerDelegate{
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let choseImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            self.delegate?.pkcCameraImage(choseImage)
+            self.delegate?.pkcCameraImage(choseImage, navigationController: self.navVC, visibleViewController: self.picker)
         }
-        picker.dismiss(animated: true, completion: nil)
     }
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

@@ -9,12 +9,15 @@
 import UIKit
 import PKCCamera
 
-
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let pkcCamera = PKCCamera()
+        pkcCamera.delegate = self
+        pkcCamera.open()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,3 +27,11 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: PKCCameraDelegate{
+    func pkcCameraVisibleViewController() -> UIViewController {
+        return self
+    }
+    func pkcCameraImage(_ image: UIImage, navigationController: UINavigationController, visibleViewController: UIViewController) {
+        
+    }
+}

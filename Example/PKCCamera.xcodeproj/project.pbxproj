@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4DF6170F4FD2ED9AF97A5932 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		4DF6170F4FD2ED9AF97A5932 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* PKCCamera_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PKCCamera_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,10 +42,10 @@
 		7941F8965B41B525894AC1D5 /* Pods-PKCCamera_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PKCCamera_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PKCCamera_Tests/Pods-PKCCamera_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8998E22F3455F52B031B2442 /* Pods-PKCCamera_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PKCCamera_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PKCCamera_Tests/Pods-PKCCamera_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9A19F850C637DF0B180EA4ED /* Pods-PKCCamera_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PKCCamera_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PKCCamera_Example/Pods-PKCCamera_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A3AAA76C4FD73F4473FA4567 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		A3AAA76C4FD73F4473FA4567 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		BA47C107BA9B91EF2B55CF81 /* Pods_PKCCamera_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PKCCamera_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C03CB568B46EAFB74648D92C /* Pods_PKCCamera_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PKCCamera_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C91A7215EC76443D04CA2A09 /* PKCCamera.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = PKCCamera.podspec; path = ../PKCCamera.podspec; sourceTree = "<group>"; };
+		C91A7215EC76443D04CA2A09 /* PKCCamera.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PKCCamera.podspec; path = ../PKCCamera.podspec; sourceTree = "<group>"; };
 		E151B46FF51C51C5248B2C97 /* Pods-PKCCamera_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PKCCamera_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-PKCCamera_Example/Pods-PKCCamera_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -496,6 +496,7 @@
 			baseConfigurationReference = 9A19F850C637DF0B180EA4ED /* Pods-PKCCamera_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PKCCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -510,6 +511,7 @@
 			baseConfigurationReference = E151B46FF51C51C5248B2C97 /* Pods-PKCCamera_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PKCCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
