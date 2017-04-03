@@ -19,16 +19,16 @@ public protocol PKCCameraDelegate {
     @objc optional func pkcCameraOpen()
     @objc optional func pkcCameraCancel()
     func pkcCameraVisibleViewController() -> UIViewController
-    func pkcCameraImage(_ image: UIImage, navigationController: UINavigationController, visibleViewController: UIViewController)
+    func pkcCameraImage(_ image: UIImage, viewController: UIViewController?, navigationViewController: UINavigationController?)
 }
 
 public enum PKCCameraType{
     case onlyCheck, open
 }
 
-public class PKCCamera: NSObject {
-    
+open class PKCCamera: NSObject {
     public var delegate: PKCCameraDelegate?
+    
     
     fileprivate var isDeniedAlert = true
     fileprivate var bundleIdentifier = ""
@@ -38,17 +38,7 @@ public class PKCCamera: NSObject {
     fileprivate var deniedAlertConfirm = "이동하기"
     fileprivate var deniedAlertCancel = "취소"
     
-    fileprivate lazy var picker: UIImagePickerController! = {
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.delegate = self
-        return picker
-    }()
-    fileprivate lazy var navVC: UINavigationController! = {
-        let navVC = UINavigationController()
-        navVC.show(self.picker, sender: nil)
-        return navVC
-    }()
+    
     
     
     private override init() {
@@ -129,29 +119,26 @@ public class PKCCamera: NSObject {
         guard let vc = self.delegate?.pkcCameraVisibleViewController() else {
             return
         }
-        self.delegate?.pkcCameraOpen?()
-        vc.present(self.navVC, animated: true, completion: nil)
-    }
-    
-    
-    
-    
-}
-
-
-extension PKCCamera: UIImagePickerControllerDelegate{
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let choseImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            self.delegate?.pkcCameraImage(choseImage, navigationController: self.navVC, visibleViewController: self.picker)
+        DispatchQueue.main.async {
+            self.delegate?.pkcCameraOpen?()
+            let pkcVC = PKCCameraViewController()
+            let pkcNavVC = PKCNavigationController(rootViewController: pkcVC)
+            pkcNavVC.pkcDelegate = self
+            pkcNavVC.setNavigationBarHidden(true, animated: false)
+            vc.present(pkcNavVC, animated: true, completion: nil)
         }
     }
-    
-    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+}
+
+
+extension PKCCamera: PKCNavigationDelegate{
+    func pkcNavigationImage(_ image: UIImage, viewController: UIViewController?, navigationViewController: UINavigationController?) {
+        self.delegate?.pkcCameraImage(image, viewController: viewController, navigationViewController: navigationViewController)
+    }
+    func pkcNavigationCancel() {
         self.delegate?.pkcCameraCancel?()
-        picker.dismiss(animated: true, completion: nil)
     }
 }
 
-extension PKCCamera: UINavigationControllerDelegate{
-    
-}
+
+

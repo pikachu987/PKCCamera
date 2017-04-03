@@ -14,6 +14,13 @@
 		36E1E9FDEA6274D1E565EFF5B2138F91 /* Pods-PKCCamera_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F535FE05F9F44E9D9D209C2296072EAE /* Pods-PKCCamera_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		436B6EA222520C7F525D8D8A354914AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		5562EC9F6822D9191CA0C95730A84036 /* PKCCamera-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60CBEBC88629C2713DEC317BE711454F /* PKCCamera-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E571D161E91EFED009C613A /* PKCCameraTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E571D101E91EFED009C613A /* PKCCameraTopView.swift */; };
+		6E571D171E91EFED009C613A /* PKCCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E571D111E91EFED009C613A /* PKCCameraViewController.swift */; };
+		6E571D181E91EFED009C613A /* PKCImageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E571D121E91EFED009C613A /* PKCImageBottomView.swift */; };
+		6E571D191E91EFED009C613A /* PKCImageTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E571D131E91EFED009C613A /* PKCImageTopView.swift */; };
+		6E571D1A1E91EFED009C613A /* PKCImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E571D141E91EFED009C613A /* PKCImageViewController.swift */; };
+		6E571D1B1E91EFED009C613A /* PKCNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E571D151E91EFED009C613A /* PKCNavigationController.swift */; };
+		6E571D1D1E91F2C3009C613A /* PKCCameraBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E571D1C1E91F2C3009C613A /* PKCCameraBottomView.swift */; };
 		6E96FA1C1E8F76DD00A4D4BB /* PKCCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96FA1B1E8F76DD00A4D4BB /* PKCCamera.swift */; };
 		7E7F654FB96DC115C8D3097811D5A8F3 /* PKCCamera-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A72D8CE5C6DB63310683BC78539DDF38 /* PKCCamera-dummy.m */; };
 		AE67A46ADD01A592A139361783528162 /* Pods-PKCCamera_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB92C330BC77C21687023F40D74D64B /* Pods-PKCCamera_Tests-dummy.m */; };
@@ -42,6 +49,13 @@
 		60CBEBC88629C2713DEC317BE711454F /* PKCCamera-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PKCCamera-umbrella.h"; sourceTree = "<group>"; };
 		643823E261C24709FCD61E58516E9AE1 /* Pods-PKCCamera_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PKCCamera_Example.release.xcconfig"; sourceTree = "<group>"; };
 		67A89494FD5604B5C9A1CE96034C7A10 /* PKCCamera.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PKCCamera.modulemap; sourceTree = "<group>"; };
+		6E571D101E91EFED009C613A /* PKCCameraTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCCameraTopView.swift; sourceTree = "<group>"; };
+		6E571D111E91EFED009C613A /* PKCCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCCameraViewController.swift; sourceTree = "<group>"; };
+		6E571D121E91EFED009C613A /* PKCImageBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCImageBottomView.swift; sourceTree = "<group>"; };
+		6E571D131E91EFED009C613A /* PKCImageTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCImageTopView.swift; sourceTree = "<group>"; };
+		6E571D141E91EFED009C613A /* PKCImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCImageViewController.swift; sourceTree = "<group>"; };
+		6E571D151E91EFED009C613A /* PKCNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCNavigationController.swift; sourceTree = "<group>"; };
+		6E571D1C1E91F2C3009C613A /* PKCCameraBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCCameraBottomView.swift; sourceTree = "<group>"; };
 		6E96FA1B1E8F76DD00A4D4BB /* PKCCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKCCamera.swift; sourceTree = "<group>"; };
 		71485FF5584478B5905D009D828483E7 /* Pods-PKCCamera_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PKCCamera_Tests.modulemap"; sourceTree = "<group>"; };
 		78320A0A1203AF931C707ED4B0DEE7A1 /* Pods_PKCCamera_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PKCCamera_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +110,13 @@
 			isa = PBXGroup;
 			children = (
 				6E96FA1B1E8F76DD00A4D4BB /* PKCCamera.swift */,
+				6E571D151E91EFED009C613A /* PKCNavigationController.swift */,
+				6E571D111E91EFED009C613A /* PKCCameraViewController.swift */,
+				6E571D101E91EFED009C613A /* PKCCameraTopView.swift */,
+				6E571D1C1E91F2C3009C613A /* PKCCameraBottomView.swift */,
+				6E571D141E91EFED009C613A /* PKCImageViewController.swift */,
+				6E571D131E91EFED009C613A /* PKCImageTopView.swift */,
+				6E571D121E91EFED009C613A /* PKCImageBottomView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -342,8 +363,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E571D161E91EFED009C613A /* PKCCameraTopView.swift in Sources */,
+				6E571D181E91EFED009C613A /* PKCImageBottomView.swift in Sources */,
+				6E571D1B1E91EFED009C613A /* PKCNavigationController.swift in Sources */,
+				6E571D1D1E91F2C3009C613A /* PKCCameraBottomView.swift in Sources */,
 				7E7F654FB96DC115C8D3097811D5A8F3 /* PKCCamera-dummy.m in Sources */,
+				6E571D171E91EFED009C613A /* PKCCameraViewController.swift in Sources */,
 				6E96FA1C1E8F76DD00A4D4BB /* PKCCamera.swift in Sources */,
+				6E571D1A1E91EFED009C613A /* PKCImageViewController.swift in Sources */,
+				6E571D191E91EFED009C613A /* PKCImageTopView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +493,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/PKCCamera/PKCCamera-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/PKCCamera/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PKCCamera/PKCCamera.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -617,7 +645,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/PKCCamera/PKCCamera-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/PKCCamera/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PKCCamera/PKCCamera.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
