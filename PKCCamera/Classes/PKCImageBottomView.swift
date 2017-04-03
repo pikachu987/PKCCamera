@@ -13,6 +13,7 @@ protocol PKCImageBottomDelegate {
     func pkcImageBottomUse()
 }
 
+@available(iOS 9.0, *)
 class PKCImageBottomView: UIView {
     
     

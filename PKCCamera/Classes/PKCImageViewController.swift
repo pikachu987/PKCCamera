@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+@available(iOS 9.0, *)
 class PKCImageViewController: UIViewController {
     var imageData: Data?
     var cameraPosition: AVCaptureDevicePosition = .back
@@ -119,6 +120,7 @@ class PKCImageViewController: UIViewController {
     
 }
 
+@available(iOS 9.0, *)
 extension PKCImageViewController: PKCImageBottomDelegate{
     func pkcImageBottomRetake() {
         _ = self.navigationController?.popViewController(animated: true)

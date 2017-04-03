@@ -14,6 +14,7 @@ protocol PKCCameraBottomDelegate {
     func pkcCameraBottomShutter()
 }
 
+@available(iOS 9.0, *)
 class PKCCameraBottomView: UIView {
     class ShutterButton: UIButton{
         override var isHighlighted: Bool {

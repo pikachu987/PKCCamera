@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-
+@available(iOS 9.0, *)
 class PKCCameraViewController: UIViewController {
     var captureSession = AVCaptureSession()
     var captureDeviceInput : AVCaptureDeviceInput?
@@ -241,6 +241,7 @@ class PKCCameraViewController: UIViewController {
 }
 
 
+@available(iOS 9.0, *)
 extension PKCCameraViewController: PKCCameraBottomDelegate{
     func pkcCameraBottomCancel() {
         if let pkcNavVC = self.navigationController as? PKCNavigationController{

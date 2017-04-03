@@ -26,6 +26,7 @@ public enum PKCCameraType{
     case onlyCheck, open
 }
 
+@available(iOS 9.0, *)
 open class PKCCamera: NSObject {
     public var delegate: PKCCameraDelegate?
     
@@ -79,11 +80,7 @@ open class PKCCamera: NSObject {
                 guard let url = URL(string: "\(UIApplicationOpenSettingsURLString)\(self.bundleIdentifier)") else{
                     return
                 }
-                if #available(iOS 8.0, *) {
-                    UIApplication.shared.openURL(url)
-                }else{
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
+                UIApplication.shared.openURL(url)
             }))
             vc.present(alertController, animated: true, completion: nil)
         }
@@ -131,6 +128,7 @@ open class PKCCamera: NSObject {
 }
 
 
+@available(iOS 9.0, *)
 extension PKCCamera: PKCNavigationDelegate{
     func pkcNavigationImage(_ image: UIImage, viewController: UIViewController?, navigationViewController: UINavigationController?) {
         self.delegate?.pkcCameraImage(image, viewController: viewController, navigationViewController: navigationViewController)
