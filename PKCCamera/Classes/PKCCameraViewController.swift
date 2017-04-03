@@ -26,6 +26,7 @@ class PKCCameraViewController: UIViewController {
     
     var visualEffectView: UIVisualEffectView!
     
+    var isSwitch = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,6 +174,7 @@ class PKCCameraViewController: UIViewController {
                         }
                     }
                 }
+                self.isSwitch = false
             }catch{
                 print("error")
             }
@@ -250,16 +252,19 @@ extension PKCCameraViewController: PKCCameraBottomDelegate{
         self.dismiss(animated: true, completion: nil)
     }
     func pkcCameraBottomSwitch() {
-        self.visualEffectView.removeFromSuperview()
-        self.centerView.addSubview(self.visualEffectView)
-        if PKCCameraViewController.cameraPosition == .back{
-            PKCCameraViewController.cameraPosition = .front
-        }else{
-            PKCCameraViewController.cameraPosition = .back
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { 
-            UIView.transition(with: self.centerView, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromLeft, animations: nil)
-            self.cameraSelected()
+        if !self.isSwitch{
+            self.isSwitch = true
+            self.visualEffectView.removeFromSuperview()
+            self.centerView.addSubview(self.visualEffectView)
+            if PKCCameraViewController.cameraPosition == .back{
+                PKCCameraViewController.cameraPosition = .front
+            }else{
+                PKCCameraViewController.cameraPosition = .back
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                UIView.transition(with: self.centerView, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromLeft, animations: nil)
+                self.cameraSelected()
+            }
         }
     }
     func pkcCameraBottomShutter() {

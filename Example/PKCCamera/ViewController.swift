@@ -37,6 +37,7 @@ class ViewController: UIViewController {
         
         self.img = UIImageView()
         self.img.frame = CGRect(x: 0, y: 150, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150)
+        self.view.addSubview(self.img)
     }
     
     override func didReceiveMemoryWarning() {
